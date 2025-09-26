@@ -1,11 +1,7 @@
-<template>
+﻿<template>
   <div>
-    <h1>LJK_学习Cesium笔记</h1>
+    <h1>LJK_学习Cesium笔记_02坐标转换</h1>
   </div>
-
-  <!--  <div id="cesium-toolbar">-->
-  <!--    toolbar-->
-  <!--  </div>-->
   <div id="cesium-viewer">
   </div>
 </template>
@@ -82,7 +78,6 @@ onMounted(async () => {
   var flaot01 = (0.1+0.2).toFixed(1);
   console.log(flaot01==0.3);
 
-
 })
 </script>
 
@@ -92,5 +87,4 @@ onMounted(async () => {
   height: 100%;
   overflow: hidden;
 }
-
 </style>
