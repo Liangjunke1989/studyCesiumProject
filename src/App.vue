@@ -33,54 +33,17 @@ onMounted(async () => {
     //隐藏cesium ion logo
     //通过隐藏样式来隐藏
   })
-  console.log("----------------1.笛卡尔坐标系-----------------------");
-  let originPoint = new Cesium.Cartesian3(0,0,0);//笛卡尔坐标
-  console.log(originPoint);
-  console.log("\n")
-  console.log("----------------2.将经纬度转成笛卡尔坐标--------------");
-  //将经纬度转成笛卡尔坐标
-  let CartesianPos =Cesium.Cartesian3.fromDegrees(114,30,100)//经纬度,高度
-  console.log("CartesianPos:",CartesianPos);
-  let CartesianPos2 =Cesium.Cartesian3.fromDegrees(114,30,120)//经纬度,高度
-  console.log("CartesianPos2:",CartesianPos2);
-  console.log("\n")
-  console.log("----------------3.将笛卡尔坐标转成经纬度坐标（需要中间使用弧度坐标进行转换）--");
-  console.log("----------------3.1 将笛卡尔坐标转成弧度坐标系-----------");
-  //将经纬度转成弧度坐标系
-  let CartographicPos = Cesium.Cartographic.fromDegrees(114,30,100);//经纬度,高度
-  console.log("CartographicPos:",CartographicPos);
+  const position = Cesium.Cartesian3.fromDegrees(114,30,1000);
+  viewer.camera.setView({
+    destination: position//设置相机目的地，初始化相机的初始位置
+  })
+  //相机的三个方向
+  //orientation用来设定相机的方向，默认是lookat
+  //orientation用来控制相机的heading(偏航角), pitch(仰俯角), roll(翻滚角)，相机镜头当前浏览器窗口所在的方位
+  //绕Y轴旋转：yaw    ----摇头
+  //绕X轴旋转：pitch  ----俯仰
+  //绕Z轴旋转：roll   ----翻滚
 
-  let CartographicPos2 = Cesium.Cartographic.fromCartesian(CartesianPos);//经纬度,高度
-  console.log("CartographicPos2:",CartographicPos2);
-  let CartographicPos3 = Cesium.Cartographic.fromCartesian(CartesianPos2);//经纬度,高度
-  console.log("CartographicPos3:",CartographicPos3);
-  console.log("---------------3.2 将弧度坐标转成经纬度坐标（原始）------------")
-  let lon=180/Math.PI*CartographicPos.longitude;
-  let lat=180/Math.PI*CartographicPos.latitude;
-  console.log("lon:",lon);
-  console.log("lat:",lat);
-  let lon2=180/Math.PI*CartographicPos2.longitude;
-  let lat2=180/Math.PI*CartographicPos2.latitude;
-  console.log("lon2:",lon2);
-  console.log("lat2:",lat2);
-  console.log("---------------3.2 将弧度坐标转成经纬度坐标（自带api）------------")
-  let lon3=Cesium.Math.toDegrees(CartographicPos.longitude);
-  let lat3=Cesium.Math.toDegrees(CartographicPos.latitude);
-  console.log("lon3:",lon3);
-  console.log("lat3:",lat3);
-  let lon4=Cesium.Math.toDegrees(CartographicPos2.longitude);
-  let lat4=Cesium.Math.toDegrees(CartographicPos2.latitude);
-  console.log("lon4:",lon4);
-  console.log("lat4:",lat4);
-
-  console.log("----------------遗留拓展问题--------------");
-  // js的精度问题?
-  console.log("js的小数精度问题？");
-  console.log(0.1+0.2);
-  console.log(0.1+0.2==0.3);//false
-  //怎么解决js的精度问题？
-  var flaot01 = (0.1+0.2).toFixed(1);
-  console.log(flaot01==0.3);
 
 
 })
