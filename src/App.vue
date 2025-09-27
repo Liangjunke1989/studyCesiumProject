@@ -33,16 +33,31 @@ onMounted(async () => {
     //隐藏cesium ion logo
     //通过隐藏样式来隐藏
   })
-  const position = Cesium.Cartesian3.fromDegrees(114,30,1000);
-  viewer.camera.setView({
-    destination: position//设置相机目的地，初始化相机的初始位置
-  })
   //相机的三个方向
   //orientation用来设定相机的方向，默认是lookat
   //orientation用来控制相机的heading(偏航角), pitch(仰俯角), roll(翻滚角)，相机镜头当前浏览器窗口所在的方位
   //绕Y轴旋转：yaw    ----摇头
   //绕X轴旋转：pitch  ----俯仰
   //绕Z轴旋转：roll   ----翻滚
+  const position = Cesium.Cartesian3.fromDegrees(116.766689,35.9686000,100);
+  viewer.camera.setView({
+    destination: position,//设置相机目的地，初始化相机的初始位置
+    orientation: {
+      heading: Cesium.Math.toRadians(0),//Radians弧度
+      pitch: Cesium.Math.toRadians(-45),
+      roll: 0
+    }
+  })
+  const position2 = Cesium.Cartesian3.fromDegrees(116.76666,35.969522,50);
+  viewer.camera.flyTo( {
+    destination: position2,
+    orientation: {
+      heading: Cesium.Math.toRadians(0),
+      pitch: Cesium.Math.toRadians(-90),
+      roll: 0
+    }
+  })
+
 
 
 
