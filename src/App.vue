@@ -10,7 +10,7 @@
 <script setup>
 import * as Cesium from 'cesium';
 import {onMounted} from "vue";
-
+import  * as turf from '@turf/turf';
 const myToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIyZDY5MDU2ZS1mZTdlLTQzMmUtOGVlNC05NWM0ZDQ3MTUwNmIiLCJpZCI6MzQ0NzIxLCJpYXQiOjE3NTg4NTY4MDN9.TdrDuDBUqo2ZGzQ-sDUIJvBu8KqS5KSO6nx1s88OkQQ';
 onMounted(async () => {
   Cesium.Ion.defaultAccessToken = myToken;
@@ -40,7 +40,18 @@ onMounted(async () => {
       color: Cesium.Color.BLUE.withAlpha(0.25)
     },
   })
-  //viewer.zoomTo(point02)
+  viewer.zoomTo(point)
+
+  const linesString1=turf.lineString([[116.76666, 35.969522], [116.76666, 35.969522]], {name: 'line1'});
+  const promise=Cesium.GeoJsonDataSource.load(linesString1);
+ promise.then(function(dataSource){//加载完成后返回的数据
+   console.log(dataSource);
+   dataSource.entities.values.forEach(function(entity){
+     viewer.entities.add(entity);
+     console.log(entity.polyline.positions.getValue());
+   })
+ })
+
 
 })
 </script>
