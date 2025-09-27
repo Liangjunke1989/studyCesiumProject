@@ -1,11 +1,8 @@
-<template>
+﻿<template>
   <div>
-    <h1>LJK_学习Cesium笔记</h1>
+    <h1>LJK_学习Cesium笔记_04创建物体</h1>
   </div>
 
-  <!--  <div id="cesium-toolbar">-->
-  <!--    toolbar-->
-  <!--  </div>-->
   <div id="cesium-viewer">
   </div>
 </template>
@@ -121,9 +118,9 @@ onMounted(async () => {
     id: 'line',
     polyline: {
       positions:Cesium.Cartesian3.fromDegreesArray([
-          116.766689, 35.969522,
-          116.766689, 35.969722,
-          116.766889, 35.969722,
+        116.766689, 35.969522,
+        116.766689, 35.969722,
+        116.766889, 35.969722,
       ]),
       width: 80,
       material: Cesium.Color.BROWN.withAlpha(0.5)
@@ -196,7 +193,7 @@ onMounted(async () => {
       outline: true,
       outlineColor: Cesium.Color.WHITE,
     }
-   })
+  })
 
 
   console.log("-------------------7.4、设置其他目标（如：椭圆）-------------------------");
