@@ -252,6 +252,28 @@ onMounted(async () => {
       }
     }
   }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
+
+
+  console.log("-------------------9、使用回调函数动态生成Entity-------------------------");
+  let num=0,lon,lat,height;
+  //用CallbackProperty: 生成动态实体
+  const line99=viewer.entities.add({
+    id: 'line99',// id名称要唯一
+    polyline: {
+      positions: new Cesium.CallbackProperty(function (time, result) {
+        num+=0.0000005;
+        lon = 116.766689 + num;
+        lat = 35.969522 + num;
+        if (lon < 116.87689){
+          return Cesium.Cartesian3.fromDegreesArray([116.766689, 35.969522, lon, lat]);
+        }else {
+          line.polyline.positions=Cesium.Cartesian3.fromDegreesArray([116.766689, 35.969522,116.77689, 35.979522]);
+        }
+      }, false),//动态属性,不传false,则属性值会缓存，不会实时更新
+      width: 50,
+      material: Cesium.Color.BROWN.withAlpha(0.5)
+    }
+  })
 })
 </script>
 
