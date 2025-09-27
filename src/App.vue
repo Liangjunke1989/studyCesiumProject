@@ -33,8 +33,7 @@ onMounted(async () => {
     //隐藏cesium ion logo
     //通过隐藏样式来隐藏
   })
-  // entity: 实体
-  //点 线 面
+  //entity: 实体
   console.log("-------------------01、设置相机的初始位置-------------------------");
   //设置中国的初始位置
   const originPos0 = Cesium.Cartesian3.fromDegrees(0, 0, 0);
