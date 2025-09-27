@@ -132,8 +132,22 @@ onMounted(async () => {
   console.log(line.polyline.positions)
   viewer.zoomTo(label);
 
+  console.log("-------------------6、设置目标面-------------------------");
+  const polygon = viewer.entities.add({
+    id: 'polygon',
+    polygon: {
+      hierarchy: Cesium.Cartesian3.fromDegreesArray([
+        116.766689, 35.969522,
+        116.766689, 35.969722,
+        116.766889, 35.969722,
+        116.766889, 35.969522,
+      ]),
+      outlineWidth: 20,
+      material: Cesium.Color.YELLOW
+    }
+  })
 
-  console.log("-------------------6、设置目标点的标题的Button事件（label）-------------------------");
+  console.log("-------------------7、设置目标点的标题的Button事件（label）-------------------------");
   // label的Button事件
   viewer.screenSpaceEventHandler.setInputAction(function (movement) {
     if (Cesium.defined(movement.position)) {
@@ -153,6 +167,10 @@ onMounted(async () => {
       // 判断是否点击了线
       if (Cesium.defined(pickedObject) && pickedObject.id.id === 'line') {
         console.log('点击了线');
+      }
+      // 判断是否点击了面
+      if (Cesium.defined(pickedObject) && pickedObject.id.id === 'polygon') {
+        console.log('点击了面');
       }
     }
   }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
