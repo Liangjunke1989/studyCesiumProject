@@ -1,6 +1,6 @@
-<template>
+﻿<template>
   <div>
-    <h1>LJK_学习Cesium笔记_04创建物体</h1>
+    <h1>LJK_学习Cesium笔记_05GeoJson(使用turf插件)</h1>
   </div>
   <button @click="toDel">删除</button>
   <div id="cesium-viewer">
@@ -21,7 +21,7 @@ const myToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIyZDY5MDU2ZS1mZT
 onMounted(async () => {
   Cesium.Ion.defaultAccessToken = myToken;
   //cesium中所有的API的开始
-    viewer = new Cesium.Viewer('cesium-viewer', {
+  viewer = new Cesium.Viewer('cesium-viewer', {
     baseLayerPicker: false,//隐藏底图选择器
     geocoder: false,//隐藏搜索框
     homeButton: false,//隐藏home按钮
@@ -51,8 +51,8 @@ onMounted(async () => {
   viewer.zoomTo(point)
   console.log("-------------------02、创建线-------------------------")
   const linesString1 = turf.lineString([
-      [116.766689, 35.969522],
-      [116.766889, 35.969722]
+    [116.766689, 35.969522],
+    [116.766889, 35.969722]
   ], {name: 'line1'});
   const promise = Cesium.GeoJsonDataSource.load(linesString1);//加载数据源
   console.log("promise数据已经成功加载完成:",promise)
