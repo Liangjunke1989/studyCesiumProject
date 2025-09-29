@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div>
     <h1>LJK_学习Cesium笔记_04创建物体</h1>
   </div>
@@ -48,8 +48,48 @@ onMounted(async () => {
     },
   })
   // viewer.zoomTo(point)
-  console.log("-------------------02、3DTiles加载-------------------------")
-
+  console.log("-------------------02、primitives原始图元-------------------------")
+  // const instance=new Cesium.GeometryInstance({
+  //   geometry: new Cesium.EllipseGeometry({//创建椭圆
+  //     center: homePos,
+  //     semiMinorAxis: 50.0,
+  //     semiMajorAxis: 100.0,
+  //     rotation:Cesium.Math.toRadians(45.0),
+  //     vertexFormat: Cesium.VertexFormat.POSITION_AND_ST
+  //   }),
+  //   id: 'ellipse'
+  // });
+  // viewer.scene.primitives.add(new Cesium.Primitive({
+  //   geometryInstances: instance,
+  //   appearance: new Cesium.EllipsoidSurfaceAppearance({
+  //     material: Cesium.Material.fromType('Checkerboard')
+  //   })
+  // }))
+  // viewer.zoomTo(instance)
+  console.log("-------------------03、primitives图元-------------------------")
+  const primitive = new Cesium.Primitive({
+    geometryInstances: new Cesium.GeometryInstance({//几何实例
+      geometry: new Cesium.BoxGeometry({
+        minimum: homePos,
+        maximum: Cesium.Cartesian3.add(homePos, new Cesium.Cartesian3(50, 50, 50), new Cesium.Cartesian3()),
+        vertexFormat: Cesium.VertexFormat.POSITION_AND_ST
+      }),
+      id: 'box'
+    }),
+    appearance: new Cesium.EllipsoidSurfaceAppearance({//材质
+      // material: Cesium.Material.fromType('Water')
+      material: new Cesium.Material({
+        fabric: {
+          type: 'color',
+          uniforms: {
+            color: new Cesium.Color(0.0, 0.0, 1.0, 0.5)
+          }
+        }
+      })
+    })
+  });
+  viewer.scene.primitives.add(primitive);
+  await viewer.zoomTo(point);
 })
 </script>
 
