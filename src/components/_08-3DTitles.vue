@@ -1,6 +1,6 @@
 ﻿<template>
   <div>
-    <h1>LJK_学习Cesium笔记_0833_3DTiles</h1>
+    <h1>LJK_学习Cesium笔记_04创建物体</h1>
   </div>
   <button @click="toDel">删除</button>
   <div id="cesium-viewer">
@@ -57,8 +57,14 @@ onMounted(async () => {
   const tilesets = viewer.scene.primitives.add(
       await Cesium.Cesium3DTileset.fromIonAssetId(75343),
   );
+  const tilesetsOffline = viewer.scene.primitives.add(
+      new Cesium.Cesium3DTileset({
+        url: '/src/assets/b3dm/tileset.json',
+      }),
+  );
+  // await viewer.flyTo(tilesetsOffline)
 
-  await viewer.zoomTo(tilesets);
+  //await viewer.zoomTo(tilesets);
 
 })
 </script>

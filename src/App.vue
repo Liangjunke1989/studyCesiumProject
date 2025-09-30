@@ -57,8 +57,14 @@ onMounted(async () => {
   const tilesets = viewer.scene.primitives.add(
       await Cesium.Cesium3DTileset.fromIonAssetId(75343),
   );
+  const tilesetsOffline = viewer.scene.primitives.add(
+      new Cesium.Cesium3DTileset({
+        url: '/src/assets/b3dm/tileset.json',
+      }),
+  );
+  // await viewer.flyTo(tilesetsOffline)
 
-  await viewer.zoomTo(tilesets);
+  //await viewer.zoomTo(tilesets);
 
 })
 </script>
