@@ -1,6 +1,6 @@
-<template>
+﻿<template>
   <div>
-    <h1>LJK_学习Cesium笔记_04创建物体</h1>
+    <h1>LJK_学习Cesium笔记_0833_3DTiles</h1>
   </div>
   <button @click="toDel">删除</button>
   <div id="cesium-viewer">

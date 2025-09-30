@@ -1,6 +1,6 @@
 ﻿<template>
   <div>
-    <h1>LJK_学习Cesium笔记_04创建物体</h1>
+    <h1>LJK_学习Cesium笔记_07Promitive图元</h1>
   </div>
   <button @click="toDel">删除</button>
   <div id="cesium-viewer">
@@ -12,11 +12,17 @@
 import * as Cesium from 'cesium';
 import {markRaw, onMounted} from "vue";
 
+//entity: 实体
+//调用方便，封装完美
+//是基于primitive的封装
+
+//primitive: 原生图元
+//更接近底层，更自由，更灵活
+//由几何实例和材质组成(Gemetry几何形状、Apperance外观)
+//很多要素时候，使用primitive会比entity更快
+
+
 let viewer, data;
-const toDel = () => {
-  //viewer.entities.removeAll();
-  viewer.dataSources.remove(data);
-}
 const myToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIyZDY5MDU2ZS1mZTdlLTQzMmUtOGVlNC05NWM0ZDQ3MTUwNmIiLCJpZCI6MzQ0NzIxLCJpYXQiOjE3NTg4NTY4MDN9.TdrDuDBUqo2ZGzQ-sDUIJvBu8KqS5KSO6nx1s88OkQQ';
 onMounted(async () => {
   Cesium.Ion.defaultAccessToken = myToken;
